@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.application.sawai.gallery">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+
+    <application
+        android:name=".gallery.ApplicationOwnGallery"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".gallery.activity.ActivityHome"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".gallery.activity.AlbumActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppThemeNew" >
+        </activity>
+        <activity
+            android:name=".gallery.activity.PhotoPreviewActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppThemeNew" >
+        </activity>
+
+        <service android:name=".jobs.UploadJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE" >
+            ...
+        </service>
+
+        <service android:name=".MyService" />
+        <receiver android:name=".reciever.MyBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+            </intent-filter>
+
+        </receiver>
+
+    </application>
+
+</manifest>
